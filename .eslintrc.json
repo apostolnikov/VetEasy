@@ -5,6 +5,9 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "no-use-before-define": ["error", { "variables": false }],
         "react/destructuring-assignment": false,
-        "react/prop-types": false
+        "react/prop-types": false,
+        "global-require": 0,
+        "react/jsx-wrap-multilines": false,
+        "object-curly-newline": 0
       }
 }
