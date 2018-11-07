@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "demo-expo-project",
-    "description": "A very interesting project.",
-    "slug": "demo-expo-project",
+    "name": "VetEasy",
+    "description": "A simple med calculator designed to help veterinary doctors on their daily tasks.",
+    "slug": "VetEasy",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
