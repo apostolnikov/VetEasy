@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AnimalsList from '../components/AnimalsList';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -9,7 +10,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Header>Get started by opening</Header>
+        <AnimalsList />
       </Wrapper>
     );
   }

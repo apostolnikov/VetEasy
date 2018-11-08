@@ -10,6 +10,10 @@
         "react/jsx-wrap-multilines": false,
         "object-curly-newline": 0,
         "import/prefer-default-export": false,
-        "prefer-destructuring": 0
+        "prefer-destructuring": 0,
+        "eol-last": 0,
+        "react/jsx-boolean-value": false,
+        "comma-dangle": 0,
+        "operator-linebreak": 0
       }
 }

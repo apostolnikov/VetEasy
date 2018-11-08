@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from 'expo';
 
-import Colors from '../constants/Colors';
+import Colors from '../../constants/Colors';
 
-export default ({ name, focused }) => (
+const TabBarIcon = ({ name, focused }) => (
   <Icon.Ionicons
     name={name}
     size={26}
@@ -11,3 +11,5 @@ export default ({ name, focused }) => (
     color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
   />
 );
+
+export default TabBarIcon;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarIcon from './components/Shared/TabBarIcon';
+import HomeScreen from './screens/HomeScreen';
+import LinksScreen from './screens/LinksScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -53,8 +53,14 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
+const Routes = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+});
+
+export default createSwitchNavigator({
+  // You could add another route here for authentication.
+  // Read more at https://reactnavigation.org/docs/en/auth-flow.html
+  Main: Routes,
 });
