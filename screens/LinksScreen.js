@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import styled from 'styled-components';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -8,15 +8,12 @@ export default class LinksScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container} />
+      <ScrollWrapper />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
+const ScrollWrapper = styled.ScrollView`
+  flex: 1;
+  padding-top: 15;
+  background-color: #fff;
+`;

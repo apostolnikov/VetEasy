@@ -8,6 +8,8 @@
         "react/prop-types": false,
         "global-require": 0,
         "react/jsx-wrap-multilines": false,
-        "object-curly-newline": 0
+        "object-curly-newline": 0,
+        "import/prefer-default-export": false,
+        "prefer-destructuring": 0
       }
 }

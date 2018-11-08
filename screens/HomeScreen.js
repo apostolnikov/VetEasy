@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -8,22 +8,21 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.getStartedText}>Get started by opening</Text>
-      </View>
+      <Wrapper>
+        <Header>Get started by opening</Header>
+      </Wrapper>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-});
+const Wrapper = styled.View`
+  flex: 1;
+  background-color: #fff;
+`;
+
+const Header = styled.Text`
+  fontSize: 17;
+  color: rgba(96,100,109, 1);
+  line-height: 24;
+  textAlign: center;
+`;
