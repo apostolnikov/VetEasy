@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from './components/Shared/TabBarIcon';
 import HomeScreen from './screens/HomeScreen';
@@ -9,6 +9,14 @@ import SettingsScreen from './screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+});
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen,
+});
+
+const LinksStack = createStackNavigator({
+  Links: LinksScreen,
 });
 
 HomeStack.navigationOptions = {
@@ -25,10 +33,6 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarIcon: ({ focused }) => (
@@ -38,10 +42,6 @@ LinksStack.navigationOptions = {
     />
   ),
 };
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
@@ -59,8 +59,4 @@ const Routes = createBottomTabNavigator({
   SettingsStack,
 });
 
-export default createSwitchNavigator({
-  // You could add another route here for authentication.
-  // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-  Main: Routes,
-});
+export default Routes;
