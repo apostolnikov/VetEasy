@@ -27,6 +27,7 @@ class AnimalsList extends React.Component {
         keyExtractor={this.getItemKey}
         renderItem={this.renderVideo}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
       />
     );
   }
@@ -36,6 +37,7 @@ export default AnimalsList;
 
 const AnimalWrapper = styled.TouchableOpacity`
   width: ${props => props.window.width / 2};
+  height: 100%;
   padding: 5px;
 `;
 
