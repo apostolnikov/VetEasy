@@ -1,17 +1,22 @@
 import React from 'react';
 import { FlatList, Text } from 'react-native';
 import styled from 'styled-components';
+import Layout from '../constants/Layout';
 
 class AnimalsList extends React.Component {
   state = {
-    animalsList: ['cat', 'dog', 'cow']
+    animalsList: ['cat', 'dog', 'cow', 'mustelids']
   }
 
-  renderVideo = ({ item }) => (
-    <AnimalWrapper onPress={() => this.selectAnimal(item)}>
-      <Text>{item}</Text>
-    </AnimalWrapper>
-  );
+  renderVideo = ({ item }) => {
+    const assetPatch = `../assets/images/${item}.png`;
+    return (
+      <AnimalWrapper onPress={() => this.selectAnimal(item)} window={Layout.window}>
+        <Text>{item}</Text>
+        <AnimalIcon source={require('../assets/images/dog.png')} />
+      </AnimalWrapper>
+    );
+  }
 
   getItemKey = item => this.state.animalsList.indexOf(item).toString();
 
@@ -30,7 +35,11 @@ class AnimalsList extends React.Component {
 export default AnimalsList;
 
 const AnimalWrapper = styled.TouchableOpacity`
+  width: ${props => props.window.width / 2};
+  padding: 5px;
+`;
+
+const AnimalIcon = styled.Image`
   width: 150px;
-  margin-right: 30px;
-  margin-bottom: 20px;
+  height: 100px;
 `;

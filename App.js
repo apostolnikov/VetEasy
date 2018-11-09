@@ -13,6 +13,10 @@ export default class App extends React.Component {
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
+      require('./assets/images/mustelids.png'),
+      require('./assets/images/cat.png'),
+      require('./assets/images/dog.png'),
+      require('./assets/images/cow.png'),
     ]),
     Font.loadAsync({
       ...Icon.Ionicons.font,

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'Info',
   };
 
   render() {

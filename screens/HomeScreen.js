@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnimalsList from '../components/AnimalsList';
+import Layout from '../constants/Layout';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -10,7 +11,10 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <Wrapper>
-        <AnimalsList />
+        <Section window={Layout.window}>
+          <Header>Choose patient type: </Header>
+          <AnimalsList />
+        </Section>
       </Wrapper>
     );
   }
@@ -19,6 +23,10 @@ export default class HomeScreen extends React.Component {
 const Wrapper = styled.View`
   flex: 1;
   background-color: #fff;
+`;
+
+const Section = styled.View`
+  height: ${props => props.window.height / 3}
 `;
 
 const Header = styled.Text`
