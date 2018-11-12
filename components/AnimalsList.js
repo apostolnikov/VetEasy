@@ -2,21 +2,18 @@ import React from 'react';
 import { FlatList, Text } from 'react-native';
 import styled from 'styled-components';
 import Layout from '../constants/Layout';
+import { animalImageResolver } from '../utils/helpers';
 
 class AnimalsList extends React.Component {
   state = {
     animalsList: ['cat', 'dog', 'cow', 'mustelids']
   }
 
-  renderVideo = ({ item }) => {
-    const assetPatch = `../assets/images/${item}.png`;
-    return (
-      <AnimalWrapper onPress={() => this.selectAnimal(item)} window={Layout.window}>
-        <Text>{item}</Text>
-        <AnimalIcon source={require('../assets/images/dog.png')} />
-      </AnimalWrapper>
-    );
-  }
+  renderVideo = ({ item }) =>
+    <AnimalWrapper onPress={() => this.selectAnimal(item)} window={Layout.window}>
+      <Text>{item}</Text>
+      <AnimalIcon source={animalImageResolver(item)} />
+    </AnimalWrapper>;
 
   getItemKey = item => this.state.animalsList.indexOf(item).toString();
 
