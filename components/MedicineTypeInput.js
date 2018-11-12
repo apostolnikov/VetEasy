@@ -8,7 +8,6 @@ export default class MedicineTypeInput extends React.Component {
     return (
       <InputContainer>
         <MedicineInput
-          placeholder="Search news"
           placeholderTextColor="#8E8E93"
           autoCapitalize="none"
           clearButtonMode="always"

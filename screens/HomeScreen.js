@@ -33,10 +33,11 @@ export default class HomeScreen extends React.Component {
 const Wrapper = styled.View`
   flex: 1;
   background-color: #fff;
+  padding: 15px;
 `;
 
 const Section = styled.View`
-  height: ${props => props.window.height / 3}
+  height: ${props => props.window.height / 3 - 20}
 `;
 
 const Header = styled.Text`
