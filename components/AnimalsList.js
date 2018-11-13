@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import styled from 'styled-components';
 import Layout from '../constants/Layout';
 import { animalImageResolver } from '../utils/helpers';
@@ -11,7 +11,6 @@ class AnimalsList extends React.Component {
 
   renderVideo = ({ item }) =>
     <AnimalWrapper onPress={() => this.selectAnimal(item)} window={Layout.window}>
-      <Text>{item}</Text>
       <AnimalIcon source={animalImageResolver(item)} />
     </AnimalWrapper>;
 
