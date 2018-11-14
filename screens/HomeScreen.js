@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 import styled from 'styled-components';
 import { hoistStatics } from 'recompose';
 import WithNetInfo from '../components/Shared/Hoc/WithNetInfo';
@@ -19,26 +20,29 @@ class HomeScreen extends React.Component {
     )
   });
 
+  state = {
+    showDoneButton: true
+  }
+
   componentDidMount() {
     this.props.navigation.setParams({
       showResult: this.showResult,
-      showDoneButton: this.props.searchResults.length > 0
+      showDoneButton: this.state.showDoneButton
     });
 
     // !this.props.isNetworkConnected && noInternetConnectionPopup();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.inputResults.length !== this.props.inputResults.length) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.showDoneButton && prevState.showDoneButton !== this.state.showDoneButton) {
       this.props.navigation.setParams({
-        showDoneButton: this.props.inputResults.length > 0
+        showResult: this.showResult,
+        showDoneButton: this.state.showDoneButton
       });
     }
   }
 
-  showResult = () => {
-    // hide all inputs and show mmols here
-  }
+  showResult = () => this.setState({showDoneButton: !this.state.showDoneButton});
 
   render() {
     return (
