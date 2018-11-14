@@ -1,22 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Context } from '../context/HomeContext';
 
 export default class KGMetricInput extends React.Component {
-  state = { }
+  state = {
+    kg: 0
+  }
+
+  handleTextChange = (kg) => this.setState({ kg });
 
   render() {
+    const { kg } = this.state;
     return (
       <InputContainer>
-        <MetricInput
-          placeholder="Search news"
-          placeholderTextColor="#8E8E93"
-          defaultValue="0:00kg"
-          autoCapitalize="none"
-          clearButtonMode="always"
-          returnKeyType="search"
-          onSubmitEditing={this.handleSubmit}
-          onChangeText={this.handleTextChange}
-        />
+        <Context.Consumer>
+          {({ updateContext }) => (
+            <MetricInput
+              placeholderTextColor="#8E8E93"
+              defaultValue="0:00kg"
+              autoCapitalize="none"
+              clearButtonMode="always"
+              returnKeyType="done"
+              onSubmitEditing={() => updateContext({ kg })}
+              onChangeText={this.handleTextChange}
+            />
+          )}
+        </Context.Consumer>
       </InputContainer>
     );
   }

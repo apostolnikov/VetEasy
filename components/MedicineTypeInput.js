@@ -1,20 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Context } from '../context/HomeContext';
 
 export default class MedicineTypeInput extends React.Component {
-  state = { }
+  state = {
+    medicineType: ''
+  }
+
+  handleTextChange = (text) => this.setState({ medicineType: text });
 
   render() {
+    const { medicineType } = this.state;
     return (
       <InputContainer>
-        <MedicineInput
-          placeholderTextColor="#8E8E93"
-          autoCapitalize="none"
-          clearButtonMode="always"
-          returnKeyType="search"
-          onSubmitEditing={this.handleSubmit}
-          onChangeText={this.handleTextChange}
-        />
+        <Context.Consumer>
+          {({ updateContext }) => (
+            <MedicineInput
+              placeholderTextColor="#8E8E93"
+              defaultValue="Nurofen"
+              autoCapitalize="none"
+              clearButtonMode="always"
+              returnKeyType="done"
+              onSubmitEditing={() => updateContext({ medicineType })}
+              onChangeText={this.handleTextChange}
+            />
+          )}
+        </Context.Consumer>
       </InputContainer>
     );
   }

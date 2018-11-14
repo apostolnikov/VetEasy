@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import styled from 'styled-components';
 import Layout from '../constants/Layout';
 import { animalImageResolver } from '../utils/helpers';
+import { Context } from '../context/HomeContext';
 
 class AnimalsList extends React.Component {
   state = {
@@ -10,9 +11,13 @@ class AnimalsList extends React.Component {
   }
 
   renderVideo = ({ item }) =>
-    <AnimalWrapper onPress={() => this.selectAnimal(item)} window={Layout.window}>
-      <AnimalIcon source={animalImageResolver(item)} />
-    </AnimalWrapper>;
+    <Context.Consumer>
+      {({ updateContext }) => (
+        <AnimalWrapper onPress={() => updateContext({ selectedAnimal: item })} window={Layout.window}>
+          <AnimalIcon source={animalImageResolver(item)} />
+        </AnimalWrapper>
+      )}
+    </Context.Consumer>;
 
   getItemKey = item => this.state.animalsList.indexOf(item).toString();
 

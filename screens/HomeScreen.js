@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
 import styled from 'styled-components';
 import { hoistStatics } from 'recompose';
 import WithNetInfo from '../components/Shared/Hoc/WithNetInfo';
@@ -8,6 +7,7 @@ import Layout from '../constants/Layout';
 import KGMetricInput from '../components/KGMetricInput';
 import MedicineTypeInput from '../components/MedicineTypeInput';
 import { HeaderButton } from '../components/Shared/HeaderButton';
+import { HomeContext } from '../context/HomeContext';
 // import { noInternetConnectionPopup } from '../components/Shared/ShakbarPopup';
 
 class HomeScreen extends React.Component {
@@ -42,24 +42,26 @@ class HomeScreen extends React.Component {
     }
   }
 
-  showResult = () => this.setState({showDoneButton: !this.state.showDoneButton});
+  showResult = () => this.setState({ showDoneButton: !this.state.showDoneButton });
 
   render() {
     return (
-      <Wrapper>
-        <Section window={Layout.window}>
-          <Header>Choose patient type: </Header>
-          <AnimalsList />
-        </Section>
-        <Section window={Layout.window}>
-          <Header>Enter animal's weight: </Header>
-          <KGMetricInput />
-        </Section>
-        <Section window={Layout.window}>
-          <Header>Enter medicine type: </Header>
-          <MedicineTypeInput />
-        </Section>
-      </Wrapper>
+      <HomeContext>
+        <Wrapper>
+          <Section window={Layout.window}>
+            <Header>Choose patient type: </Header>
+            <AnimalsList />
+          </Section>
+          <Section window={Layout.window}>
+            <Header>Enter animal's weight: </Header>
+            <KGMetricInput />
+          </Section>
+          <Section window={Layout.window}>
+            <Header>Enter medicine type: </Header>
+            <MedicineTypeInput />
+          </Section>
+        </Wrapper>
+      </HomeContext>
     );
   }
 }
