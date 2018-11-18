@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Button } from 'react-native-elements';
 import { hoistStatics } from 'recompose';
 import WithNetInfo from '../components/Shared/Hoc/WithNetInfo';
 import AnimalsList from '../components/AnimalsList';
@@ -8,6 +9,7 @@ import KGMetricInput from '../components/KGMetricInput';
 import MedicineTypeInput from '../components/MedicineTypeInput';
 import { HeaderButton } from '../components/Shared/HeaderButton';
 import { HomeContext } from '../context/HomeContext';
+import Colors from '../constants/Colors';
 // import { noInternetConnectionPopup } from '../components/Shared/ShakbarPopup';
 
 class HomeScreen extends React.Component {
@@ -49,17 +51,21 @@ class HomeScreen extends React.Component {
       <HomeContext>
         <Wrapper>
           <Section window={Layout.window}>
-            <Header>Choose patient type: </Header>
             <AnimalsList />
           </Section>
           <Section window={Layout.window}>
-            <Header>Enter animal's weight: </Header>
             <KGMetricInput />
           </Section>
           <Section window={Layout.window}>
-            <Header>Enter medicine type: </Header>
             <MedicineTypeInput />
           </Section>
+          <Button
+            icon={{name: 'heartbeat', type: 'font-awesome', size: 32}}
+            buttonStyle={{backgroundColor: Colors.tintColor, borderRadius: 10}}
+            textStyle={{textAlign: 'center'}}
+            title={`Calculate`}
+            onPress={() => console.log('calc pressed')}
+          />
         </Wrapper>
       </HomeContext>
     );
@@ -76,10 +82,4 @@ const Wrapper = styled.ScrollView`
 
 const Section = styled.View`
   height: ${props => props.window.height / 3 - 20}
-`;
-
-const Header = styled.Text`
-  fontSize: 17;
-  color: rgba(96,100,109, 1);
-  textAlign: center;
 `;

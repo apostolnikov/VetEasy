@@ -1,21 +1,25 @@
 import React from 'react';
+import { Text } from 'react-native';
 import styled from 'styled-components';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { Context } from '../context/HomeContext';
 
 export default class KGMetricInput extends React.Component {
   state = {
-    kg: 0
+    kg: 0,
+    error: ''
   }
 
   handleTextChange = (kg) => this.setState({ kg });
 
   render() {
-    const { kg } = this.state;
+    const { kg, error } = this.state;
     return (
       <InputContainer>
+        <FormLabel>Weight</FormLabel>
         <Context.Consumer>
           {({ updateContext }) => (
-            <MetricInput
+            <FormInput
               placeholderTextColor="#8E8E93"
               defaultValue="0:00kg"
               autoCapitalize="none"
@@ -26,6 +30,7 @@ export default class KGMetricInput extends React.Component {
             />
           )}
         </Context.Consumer>
+        {/* {error && <FormValidationMessage><Text>{error}</Text></FormValidationMessage>} */}
       </InputContainer>
     );
   }
@@ -39,13 +44,4 @@ const InputContainer = styled.View`
   width: 100%;
   height: 50%;
   background-color: #f8f8f8;
-`;
-
-const MetricInput = styled.TextInput`
-  border-radius: 10px;
-  background-color: rgba(142, 142, 147, 0.12);
-  width: 100%;
-  height: 100%;
-  padding: 7px 5px 7px 32px;
-  margin-bottom: 5px;
 `;
