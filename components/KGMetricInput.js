@@ -21,7 +21,6 @@ export default class KGMetricInput extends React.Component {
           {({ updateContext }) => (
             <FormInput
               placeholderTextColor="#8E8E93"
-              defaultValue="0:00kg"
               autoCapitalize="none"
               clearButtonMode="always"
               returnKeyType="done"
@@ -30,7 +29,7 @@ export default class KGMetricInput extends React.Component {
             />
           )}
         </Context.Consumer>
-        {/* {error && <FormValidationMessage><Text>{error}</Text></FormValidationMessage>} */}
+        {error ? <FormValidationMessage><Text>{error}</Text></FormValidationMessage> : null}
       </InputContainer>
     );
   }

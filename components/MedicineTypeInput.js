@@ -30,7 +30,7 @@ export default class MedicineTypeInput extends React.Component {
             />
           )}
         </Context.Consumer>
-        {/* {error && <FormValidationMessage><Text>{error}</Text></FormValidationMessage>} */}
+        {error ? <FormValidationMessage><Text>{error}</Text></FormValidationMessage> : null}
       </InputContainer>
     );
   }
@@ -38,7 +38,7 @@ export default class MedicineTypeInput extends React.Component {
 
 const InputContainer = styled.View`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   position: relative;
   width: 100%;

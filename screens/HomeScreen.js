@@ -10,7 +10,7 @@ import MedicineTypeInput from '../components/MedicineTypeInput';
 import { HeaderButton } from '../components/Shared/HeaderButton';
 import { HomeContext } from '../context/HomeContext';
 import Colors from '../constants/Colors';
-// import { noInternetConnectionPopup } from '../components/Shared/ShakbarPopup';
+import { handleErrorAlert } from '../utils/helpers';
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -32,7 +32,7 @@ class HomeScreen extends React.Component {
       showDoneButton: this.state.showDoneButton
     });
 
-    // !this.props.isNetworkConnected && noInternetConnectionPopup();
+    !this.props.isNetworkConnected && handleErrorAlert('No internet connection!');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,20 +50,16 @@ class HomeScreen extends React.Component {
     return (
       <HomeContext>
         <Wrapper>
-          <Section window={Layout.window}>
-            <AnimalsList />
-          </Section>
-          <Section window={Layout.window}>
+          <StyledAnimalList window={Layout.window} />
+          <EntrySection window={Layout.window}>
             <KGMetricInput />
-          </Section>
-          <Section window={Layout.window}>
             <MedicineTypeInput />
-          </Section>
+          </EntrySection>
           <Button
-            icon={{name: 'heartbeat', type: 'font-awesome', size: 32}}
-            buttonStyle={{backgroundColor: Colors.tintColor, borderRadius: 10}}
-            textStyle={{textAlign: 'center'}}
-            title={`Calculate`}
+            icon={{ name: 'heartbeat', type: 'font-awesome', size: 32 }}
+            buttonStyle={{ backgroundColor: Colors.tintColor, borderRadius: 10 }}
+            textStyle={{ textAlign: 'center' }}
+            title="Calculate"
             onPress={() => console.log('calc pressed')}
           />
         </Wrapper>
@@ -74,12 +70,16 @@ class HomeScreen extends React.Component {
 
 export default hoistStatics(WithNetInfo)(HomeScreen);
 
-const Wrapper = styled.ScrollView`
+const StyledAnimalList = styled(AnimalsList)`
+  height: ${props => props.window.height / 4};
+`;
+
+const Wrapper = styled.View`
   flex: 1;
   background-color: #fff;
   padding: 15px;
 `;
 
-const Section = styled.View`
-  height: ${props => props.window.height / 3 - 20}
+const EntrySection = styled.View`
+  height: ${props => props.window.height / 4};
 `;

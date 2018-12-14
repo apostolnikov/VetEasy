@@ -1,3 +1,5 @@
+import { Alert } from 'react-native';
+
 export const animalImageResolver = name => {
   const resolver = {
     cow: require('../assets/images/cow.png'),
@@ -7,3 +9,12 @@ export const animalImageResolver = name => {
   };
   return resolver[name] ? resolver[name] : null;
 };
+
+export const handleErrorAlert = (err) =>
+  Alert.alert(
+    err.message, '',
+    [
+      { text: 'OK' }
+    ],
+    { cancelable: false }
+  );
